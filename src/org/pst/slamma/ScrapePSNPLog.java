@@ -19,8 +19,6 @@ public class ScrapePSNPLog {
     private DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy");
     private DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("d MMM yyyy h:mm:ss a");
 //    private LocalDate TEST_DATE = LocalDate.of(2018, 10, 23);
-    private LocalDateTime ACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 2, 30, 0);
-    private LocalDateTime INACTIVE_TIME = LocalDateTime.of(2018, 10, 25, 2, 30, 0);
 
     public List<Trophy> trophiesFromLog(String psn) {
         List<Trophy> all_trophies = new ArrayList<>();
@@ -67,6 +65,18 @@ public class ScrapePSNPLog {
                 trophy_date = trophy_date_noformat.replaceAll("st","").replaceAll("nd","").replaceAll("rd", "").replaceAll("th","").concat(" " + trophy_time);
                 current_trophy_date = LocalDateTime.parse(trophy_date, DATE_TIME_FORMAT);
 
+                LocalDateTime ACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 2, 30, 0);
+                LocalDateTime INACTIVE_TIME;
+
+                if (psn.equals("leptonic")) {
+                    INACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 16, 28, 0);
+                } else if (psn.equals("MikeKeese")) {
+                    INACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 3, 31, 0);
+                } else if (psn.equals("Dolken_swe")) {
+                    INACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 16, 48, 0);
+                } else{
+                    INACTIVE_TIME = LocalDateTime.of(2018, 10, 25, 2, 30, 0);
+                }
                 if (current_trophy_date.isAfter(INACTIVE_TIME)) {
 //                       System.out.println("Haven't reached it yet...");
                 } else if (current_trophy_date.isAfter(ACTIVE_TIME)) {
