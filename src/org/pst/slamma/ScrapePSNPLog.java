@@ -74,7 +74,9 @@ public class ScrapePSNPLog {
                     INACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 3, 31, 0);
                 } else if (psn.equals("Dolken_swe")) {
                     INACTIVE_TIME = LocalDateTime.of(2018, 10, 23, 16, 48, 0);
-                } else{
+                } else if (psn.equals("tuffmuff")) {
+                    INACTIVE_TIME = LocalDateTime.of(2018, 10, 24, 14, 58, 0);
+                } else {
                     INACTIVE_TIME = LocalDateTime.of(2018, 10, 25, 2, 30, 0);
                 }
                 if (current_trophy_date.isAfter(INACTIVE_TIME)) {
