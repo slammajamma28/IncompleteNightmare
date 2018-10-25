@@ -36,8 +36,8 @@ public class DistributedRandomNumberGenerator {
 
 
     public static void main(String args[]) {
-        double rarity = Double.parseDouble(args[0]);
-        double death_distribution = rarity / 100;
+//        double rarity = Double.parseDouble(args[0]);
+        double death_distribution = 6.00d / 100;
         double life_distribuion = 1d - death_distribution;
 
         DistributedRandomNumberGenerator drng = new DistributedRandomNumberGenerator();
